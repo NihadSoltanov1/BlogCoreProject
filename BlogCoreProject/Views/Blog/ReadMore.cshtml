@@ -1,0 +1,47 @@
+﻿ @model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "ReadMore";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@addTagHelper *, Microsoft.Asp.NetCore.Mvc.TagHelpers
+<div class="technology">
+	<div class="container">
+			@foreach(var b in Model)
+			{
+		<div class="col-md-9 technology-left">
+
+
+			
+			<div class="agileinfo">
+
+		  <h2 class="w3">@b.BlogTitle</h2>
+			<div class="single">
+			<div class="single">
+			   <img src="~/web/images/sing-1.jpg" class="img-responsive" alt="">
+			    <div class="b-bottom"> 
+			      <h5 class="top">Blog Esas Hissesi</h5>
+				   <p class="sub">@b.BlogContent</p>
+			      <p>On Aug 01 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+				 
+				</div>
+			 </div>
+			  
+			 @await Component.InvokeAsync("CommentListByID", new {@id=ViewBag.id1})
+						@await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new {@id=ViewBag.id1})
+
+						<div class="clearfix"></div>
+				
+			</div>
+		</div>
+		<!-- technology-right -->
+
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+	}
+	@await Component.InvokeAsync("BlogWithWriterID");
+		<div class="clearfix"></div>
+		
+</div>
+
+</div>

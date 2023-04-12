@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "BlogUpdate";
+    Layout = "~/Views/Writter/WriterPanelLayout.cshtml";
+}
+
+<form asp-action="BlogUpdate" asp-controller="Writter">
+    <input type="text" style="padding:5px;width:100%;" placeholder="Başlıq" name="BlogTitle" />
+    <span asp-validation-for="BlogTitle" class="text-danger"></span>
+    <select asp-for="CategoryID" asp-items="@ViewBag.category1" style="padding:5px; width:100%; margin-top:15px;">
+        <option>Kategoriya Seçin</option>
+    </select>
+
+    <span asp-validation-for="CategoryID" class="text-danger"></span>
+    <input name="BlogContent" type="text" style="padding:5px;width:100%; height:150px; margin-top:15px; " />
+    <span asp-validation-for="BlogContent" class="text-danger"></span>
+    <button style="margin-top:15px;" class="btn btn-info">Güncəllə</button>
+</form>
+

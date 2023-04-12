@@ -1,0 +1,87 @@
+﻿@model SingUpViewModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Sign Up Form by Colorlib</title>
+
+	<!-- Font Icon -->
+	<link rel="stylesheet" href="~/webreg/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+	<!-- Main css -->
+	<link rel="stylesheet" href="~/webreg/css/style.css">
+</head>
+<body>
+
+	<div class="main">
+
+		<!-- Sign up form -->
+		<section class="signup">
+			<div class="container">
+				<div class="signup-content">
+					<div class="signup-form">
+						<h2 class="form-title">
+							Qeydiyyat
+						</h2>
+
+						<form method="post" asp-action="Index" asp-controller="IdentityRegister">
+							<div class="form-group">
+								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+								<input type="text" name="userSurname" id="name" placeholder="Ad Soyad" />
+								<span asp-validation-for="userSurname" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+								<input type="text" name="userName" id="name" placeholder="İstifadəçi" />
+								<span asp-validation-for="userName" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label for="email"><i class="zmdi zmdi-email"></i></label>
+								<input type="email" name="Mail" id="email" placeholder="Email" />
+								<span asp-validation-for="Mail" class="text-danger"></span>
+
+							</div>
+							<div class="form-group">
+								<label for="pass"><i class="zmdi zmdi-lock"></i></label>
+								<input type="password" name="Password" id="pass" placeholder="Şifrə" />
+								<span asp-validation-for="Password" class="text-danger"></span>
+
+							</div>
+							<div class="form-group">
+								<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+								<input type="password" id="re_pass" name="ConfirmPassword" placeholder="Təkrar Şifrə" />
+								<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+							</div>
+							<div class="form-group">
+								<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+								<label for="agree-term" class="label-agree-term"><span><span></span></span>Bütün Şərtlərlə Razıyam</label>
+							</div>
+							<div class="form-group form-button">
+								<button class="btn btn-primary">Qeydiyyatdan Keç</button>
+							</div>
+						</form>
+					</div>
+					<div class="signup-image">
+						<figure><img src="~/webreg/images/signup-image.jpg" alt="sing up image"></figure>
+						<a href="#" class="signup-image-link">Hesabım Var</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sing in  Form -->
+
+	</div>
+	<!-- JS -->
+	<script src="~/webreg/vendor/jquery/jquery.min.js"></script>
+	<script src="~/webreg/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

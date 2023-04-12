@@ -1,0 +1,23 @@
+﻿@model List<BlogDemooApi.DataLayer.Employee>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/AdminPanelLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Güncəllə</th>
+        <th>Sil</th>
+        
+    </tr>
+    @foreach (var i in Model){
+       <tr>
+           <td>@i.ID</td>
+           <td>@i.Name</td>
+           <td><a href="#" class="btn btn-succcess">Guncelle</a></td>
+           <td><a href="#" class="btn btn-warning">Sil</a></td>
+       </tr>
+    }
+</table>

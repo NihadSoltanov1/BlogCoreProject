@@ -1,0 +1,41 @@
+﻿@model List<EntityLayer.Concrete.Blog>
+
+
+<div class="col-md-3 technology-right">
+
+
+	<div class="blo-top1">
+
+
+		<div class="tech-btm">
+					@await Html.PartialAsync("~/Views/NewsLetter/Index.cshtml")
+
+
+			<h4>Yazarın Digər Bloqları</h4>
+			@foreach (var item in Model){
+
+			
+			<div class="blog-grids">
+				<div class="blog-grid-left">
+					<a href="singlepage.html"><img src="~/web/images/t2.jpg" class="img-responsive" alt=""></a>
+				</div>
+				<div class="blog-grid-right">
+
+					<h5><a href="singlepage.html">@item.BlogTitle</a> </h5>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			}
+
+			<div class="insta">
+			</div>
+
+
+		</div>
+
+
+
+	</div>
+
+
+</div>

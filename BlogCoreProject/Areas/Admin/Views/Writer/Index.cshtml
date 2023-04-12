@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/AdminPanelLayout.cshtml";
+}
+
+<h2>Writer Lists</h2>
+<br />
+<button type="button" id="btngetlist" class="btn btn-outline-primary">Writer List</button>
+<button type="button" id="btnfindwriter" class="btn btn-outline-primary">Find Writer</button>
+<button type="button" id="btnaddwriter" class="btn btn-outline-success">Add Writer</button>
+<button type="button" id="btndeletewriter" class="btn btn-outline-danger">Delete Writer</button>
+<button type="button" id="btnupdatewriter" class="btn btn-outline-primary">Update Writer</button>
+
+
+<br /><br />
+<input type="text" id="wid" class="from-group" />
+<br />
+<br />
+<input type="text" id="txtwriterid" class="form-group" placeholder="Writer ID" />
+<input type="text" id="txtwritername" class="form-group" placeholder="Writer Name" />
+<br />
+<br />
+<input type="text" id="txtid" class="form-group" placeholder="Writer ID" />
+<br />
+<br />
+<input type="text" id="txtid1" class="form-group" placeholder="Writer ID" />
+<input type="text" id="txtwritername1" class="form-group" placeholder="Writer sdfs" />
+<br />
+<div id="listwriter">
+    
+</div>
+<br />
+<div id="findwriter">
+   
+</div>
+
+
+
+
+
+@section scripts{
+    <script>
+        $("#btngetlist").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/Writer/WriterList/",
+                success: function (func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+                    let tablehtml = "<div class='ibox-title'><h5>Yazar Listesi</h5></div><div class='ibox-content'><table class='table'><thead><tr><th> Yazar ID</th> <th> Yazar Adı </th></tr></thead>";
+                    $.each(w, (index, item) => {
+                        tablehtml += "<tr> <td>" + item.WriterID + "</td> <td>" + item.WriterName + "</td> </tr>"
+                    });
+                    tablehtml += "</table></div>";
+                    $("#listwriter").html(tablehtml);
+                }
+            });
+        });
+
+        $("#btnfindwriter").click(function(){
+            let id = $("#wid").val();
+            $.ajax({
+                contentType:"application/json",
+                dataType:"json",
+                type:"Get",
+                url: "/Admin/Writer/GetWriterByID/",
+                data: { wid:id},
+                success: function(func){
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+                    let tablehtml = `<div class='ibox-title'></div><div class='ibox-content'><table class='table'><thead><tr><th> Yazar ID</th> <th> Yazar Adı </th></tr></thead> <tr><td>${w.WriterID}</td> <td> ${w.WriterName}</td></tr> </table> </div>`
+                    $("#findwriter").html(tablehtml);
+                }
+
+            });
+        });
+
+        $("#btnaddwriter").click(function(){
+            let writers = {
+                WriterID:$("#txtwriterid").val(),
+                WriterName:$("#txtwritername").val()
+            };
+            $.ajax(
+            {
+                type:"post",
+                url:"/Admin/Writer/AddWriter/",
+                data:writers,
+                success:function(func){
+                    var result = jQuery.parseJSON(func);
+                    alert("Yazici Sisteme Yuklendi");
+                }
+            });
+        });
+
+        $("#btndeletewriter").click(function () {
+            let wid = $("#txtid").val();
+            $.ajax(
+            {
+                type:"post",
+                dataType:"json",
+                    url: "/Admin/Writer/DeleteWriter/" + wid,
+                success : function(func){
+                    loadData();
+                }
+            }
+            );
+            
+        });
+
+        $("#btnupdatewriter").click(function () {
+            let writerss = 
+            {
+                WriterID: $("#txtid1").val(),
+                WriterName:$("#txtwritername").val()
+            };
+            $.ajax(
+                {
+                    type: "post",
+                    url: "/Admin/Writer/UpdateWriter/",
+                    data:writerss,
+                    success: function (func) {
+                        alert("Yazici Sisteme Yuklendi");
+                    }
+                }
+            );
+
+        });
+
+        //$("#btnupdatewriter").click(function(){
+        //    let writers = {
+        //        WriterID: $("#txtid1").val(),
+        //        WriterName : $("#txtwritername1").val();
+        //    }
+        //    $.ajax(
+        //    {
+        //        type:"post",
+        //        data:writers,
+        //        url : "/Admin/Writer/UpdateWriter/",
+        //        success: function(func){
+        //            alert("Data Ugurla Guncellesdirildi!");
+        //        }
+        //    }
+        //    );
+        //});
+
+    </script>
+}
+
+            

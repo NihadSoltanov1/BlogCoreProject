@@ -1,0 +1,18 @@
+﻿@model List<EntityLayer.Concrete.Category>
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Admin/AdminPanelLayout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post" asp-action="CategoryAdd" asp-controller="Category">
+    <label style="margin-bottom:5px; font-weight:bold">Kategoriya Adı</label>
+    <input type="text" placeholder="Kategoriya Adı" style="width:100%; padding:5px; border-radius:10px;" name="CategoryName" />
+    <span class="field-validation-valid" data-valmsg-for="CategoryName" data-valmsg-replace="true"></span>
+
+    <label style="margin-bottom:5px;margin-top:10px; font-weight:bold">Kategoriya Açıqlama</label>
+    <input type="text" placeholder="Kategoriya Açıqlama" style="width:100%; padding:5px; border-radius:10px; border: 1px solid dashed;" name="CategoryDescription" />
+    <span class="field-validation-valid" data-valmsg-for="CategoryDescription" data-valmsg-replace="true"></span>
+    <button style="margin-top:15px;" class="btn btn-success">Əlavə Et</button>
+
+</form>

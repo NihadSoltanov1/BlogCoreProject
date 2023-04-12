@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+
+
+
+
+<div class="response">
+	<h4>Şərhlər</h4>
+	@foreach (var i in Model)
+	{
+	<div class="media response-info">
+		<div class="media-left response-text-left">
+			<a href="#">
+				<img src="~/web/images/sin1.jpg" class="img-responsive" alt="">
+			</a>
+		</div>
+		<div class="media-body response-text-right">
+			<p>
+				@i.CommentContent
+			</p>
+			<ul>
+				<li>@(((DateTime)i.CommentDate).ToString("dd-MMM-yyy"))</li>
+				<li><a href="#">Cavabla</a></li>
+			</ul>
+			<div class="media response-info">
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+
+</div>
+	}
+</div>

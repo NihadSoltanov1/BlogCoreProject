@@ -1,0 +1,14 @@
+﻿
+
+<div class="coment-form">
+	<h4>Rəyinizi Yazın</h4>
+
+	
+	<form asp-action="AddComment" asp-controller="Comment" method="post">
+		<input type="text" value="Name " name="CommentUserName" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Ad Soyadınız';}" required="">
+		<input type="text" value="Başlıq" name="CommentTitle" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '	Başlıq';}" required="">
+
+		<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Rəyiniz...';}" required="" name="CommentContent">Rəyiniz... </textarea>
+		<input type="submit" value="Göndər">
+	</form>
+</div>	
